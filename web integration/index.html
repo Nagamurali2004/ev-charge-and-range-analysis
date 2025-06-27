@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EV Analytics | Electric Vehicle Data Insights</title>
+  <meta content="Comprehensive analytics platform for electric vehicle market trends, performance data, and industry insights" name="description">
+  <meta content="electric vehicles, EV analytics, car data, vehicle performance, charging stations" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/ev-favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.7/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <style>
+    :root {
+      --primary-color: #00b4d8;
+      --secondary-color: #0077b6;
+      --dark-color: #03045e;
+      --light-color: #caf0f8;
+      --accent-color: #ff9e00;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #444;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+    }
+    
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+    
+    /* Header */
+    .header {
+      transition: all 0.5s;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-scrolled {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo img {
+      max-height: 40px;
+    }
+    
+    .navbar ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .navbar li {
+      position: relative;
+    }
+    
+    .navbar a, .navbar a:focus {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 15px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #2a2a2a;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+    
+    .navbar a i, .navbar a:focus i {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+    }
+    
+    .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover>a {
+      color: var(--primary-color);
+    }
+    
+    .getstarted {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 8px 20px;
+      margin-left: 15px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    
+    .getstarted:hover {
+      color: #fff;
+      background: rgba(0, 180, 216, 0.8);
+    }
+    
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, rgba(0,180,216,0.1) 0%, rgba(202,240,248,0.05) 100%);
+      padding: 120px 0 60px 0;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.2;
+      background: linear-gradient(to right, var(--dark-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero h2 {
+      color: #4a4a4a;
+      margin: 15px 0 30px 0;
+      font-size: 1.5rem;
+    }
+    
+    .btn-get-started {
+      background: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-get-started:hover {
+      background: transparent;
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 180, 216, 0.2);
+    }
+    
+    .hero-img {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      background: var(--light-color);
+    }
+    
+    .stats-section .display-4 {
+      font-size: 2.5rem;
+    }
+    
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      padding-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      bottom: -10px;
+      left: 25%;
+      background: var(--primary-color);
+    }
+    
+    .section-header p {
+      margin: 15px auto 0 auto;
+      width: 70%;
+    }
+    
+    /* About Section */
+    .skills .skill-bar {
+      height: 5px;
+      background: #e9ecef;
+      border-radius: 3px;
+      margin-bottom: 20px;
+    }
+    
+    .skills .skill-progress {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--primary-color);
+      width: 0;
+      transition: width 1.5s ease-out;
+    }
+    
+    /* Features Section */
+    .feature-box {
+      transition: transform 0.3s ease;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-box i {
+      font-size: 2rem;
+      color: var(--primary-color);
+    }
+    
+    /* Testimonials */
+    .testimonials-slider {
+      overflow: hidden;
+    }
+    
+    .testimonial-item {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      padding: 30px;
+      height: 100%;
+    }
+    
+    .testimonial-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .testimonial-item .stars {
+      color: #ffc107;
+      margin-bottom: 15px;
+    }
+    
+    .testimonial-item .testimonial-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    
+    /* Team Section */
+    .member {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .member-img {
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    .member-img img {
+      transition: transform 0.5s ease;
+    }
+    
+    .member:hover .member-img img {
+      transform: scale(1.1);
+    }
+    
+    .member .social {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 40px;
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .member .social a {
+      color: #fff;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .member .social a:hover {
+      color: var(--primary-color);
+    }
+    
+    .member:hover .social {
+      opacity: 1;
+    }
+    
+    /* Contact Section */
+    .info-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      height: 100%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .info-box i {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    .php-email-form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .php-email-form .form-control {
+      height: 50px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+    }
+    
+    .php-email-form textarea.form-control {
+      height: auto;
+    }
+    
+    /* Newsletter */
+    .newsletter {
+      background: var(--primary-color);
+      color: #fff;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #2a2a2a;
+      color: #fff;
+    }
+    
+    .footer h4 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      padding: 5px 0;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      padding-left: 5px;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: #fff;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .footer .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      visibility: hidden;
+      opacity: 0;
+      right: 15px;
+      bottom: 15px;
+      z-index: 996;
+      background: var(--primary-color);
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      transition: all 0.4s;
+    }
+    
+    .back-to-top i {
+      font-size: 24px;
+      color: #fff;
+      line-height: 0;
+    }
+    
+    .back-to-top:hover {
+      background: rgba(0, 180, 216, 0.8);
+      color: #fff;
+    }
+    
+    .back-to-top.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Responsive */
+    @media (max-width: 991px) {
+      .hero {
+        padding: 80px 0 40px 0;
+        height: auto;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero h2 {
+        font-size: 1.3rem;
+      }
+      
+      .section-header p {
+        width: 100%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .stats-section .display-4 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Simple Large Logo -->
+<div class="logo-container">
+  <img src="assets/img/logo3.jpg" 
+       alt="EV Analytics" 
+       width="100" 
+       height="100"
+       class="clean-logo">
+</div>
+
+<style>
+  .logo-container {
+    display: inline-block; /* Ensures proper sizing */
+    padding: 10px; /* Adds breathing space */
+  }
+  
+  .clean-logo {
+    display: block; /* Removes extra space below image */
+    border-radius: 8px; /* Soft rounded corners */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+  }
+  
+  .clean-logo:hover {
+    transform: scale(1.03); /* Subtle hover enlargement */
+  }
+</style>
+        <span class="ms-2 fw-bold">EV Analytics</span>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#dashboard">Dashboard</a></li>
+          <li><a class="nav-link scrollto" href="#features">Features</a></li>
+          <li><a class="nav-link scrollto" href="#story">Story</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="getstarted scrollto" href="#contact">Get Started</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">Revolutionizing EV Analytics with Smart Data Solutions</h1>
+          <h2 data-aos="fade-up" data-aos-delay="400">Powering the future of electric mobility through advanced analytics</h2>
+          
+          <div data-aos="fade-up" data-aos-delay="600">
+            <div class="text-center text-lg-start">
+              <a href="#about" class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center">
+                <span>Explore Insights</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
+         <img src="assets/img/logo.jpg" alt="EV Analytics Dashboard Preview" class="img-fluid" loading="lazy"> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section py-4 bg-light">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-md-3 col-6" data-aos="fade-up">
+          <div class="text-center">
+            <div class="display-4 fw-bold text-primary" data-count="12000">0</div>
+            <p class="mb-0">EV Models Tracked</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-center">
+            <div class="display-4 fw-bold text-primary" data-count="850">0</div>
+            <p class="mb-0">Charging Stations</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-center">
+            <div class="display-4 fw-bold text-primary" data-count="42">0</div>
+            <p class="mb-0">Countries Covered</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-center">
+            <div class="display-4 fw-bold text-primary" data-count="95">0</div>
+            <p class="mb-0">% Accuracy</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        <div class="row gx-0">
+          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Why Choose EV Analytics?</h3>
+              <h2>Comprehensive data insights for the electric vehicle revolution</h2>
+              <p>
+                The electric vehicle market is growing exponentially, with global EV sales increasing by over 40% annually. 
+                Our platform provides real-time analytics on vehicle performance, charging infrastructure, battery technology, 
+                and market trends to help businesses and consumers make informed decisions in this rapidly evolving sector.
+              </p>
+              <div class="skills">
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <span>Battery Technology</span>
+                    <span>92%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="--percentage: 92%"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <span>Charging Infrastructure</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="--percentage: 85%"></div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <span>Market Trends</span>
+                    <span>95%</span>
+                  </div>
+                  <div class="skill-bar">
+                    <div class="skill-progress" style="--percentage: 95%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="assets/img/img3.jpg" alt="EV Analytics Dashboard Preview" class="img-fluid" loading="lazy"> 
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Dashboard Section ======= -->
+    <div class="tableauPlaceholder" id="viz1681653187296" style="width: 100%; height: 800px;">
+  <object class="tableauViz" 
+          title="Drive Smart: EV Charge & Range Analysis"
+          width="100%" 
+          height="800"
+          data="https://public.tableau.com/views/DriveSmartEVChargeRangeAnalysis/ElectricalVehicalDashboard?:embed=y&:display_count=yes&:showVizHome=no&:origin=viz_share_link">
+    
+    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+    <param name="embed_code_version" value="3" />
+    <param name="site_root" value="" />
+    <param name="name" value="DriveSmartEVChargeRangeAnalysis/ElectricalVehicalDashboard" />
+    <param name="tabs" value="no" />
+    <param name="toolbar" value="yes" />
+
+    <!-- Fallback for older browsers -->
+    <p>Your browser doesn’t support embedded dashboards. 
+       <a href="https://public.tableau.com/views/DriveSmartEVChargeRangeAnalysis/ElectricalVehicalDashboard?publish=yes" target="_blank">View it directly here</a>.
+    </p>
+    
+  </object>
+</div>
+
+<!-- Load Tableau JS API -->
+<script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container" data-aos="fade-up">
+        <header class="section-header">
+          <h2>Key Features</h2>
+          <p>What makes our EV analytics platform unique</p>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <img src="assets/img/logo1.jpg" alt="EV Analytics Dashboard Preview" class="img-fluid" loading="lazy"> </div>
+
+          <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
+            <div class="row align-self-center gy-4">
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="200">
+                <div class="feature-box d-flex align-items-center p-3 rounded-3 shadow-sm">
+                  <i class="bi bi-speedometer2 fs-1 text-primary me-3"></i>
+                  <div>
+                    <h3>Real-time Performance</h3>
+                    <p class="mb-0">Monitor EV performance metrics in real-time</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="300">
+                <div class="feature-box d-flex align-items-center p-3 rounded-3 shadow-sm">
+                  <i class="bi bi-lightning-charge fs-1 text-primary me-3"></i>
+                  <div>
+                    <h3>Charging Analysis</h3>
+                    <p class="mb-0">Optimize charging patterns and infrastructure</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="400">
+                <div class="feature-box d-flex align-items-center p-3 rounded-3 shadow-sm">
+                  <i class="bi bi-graph-up fs-1 text-primary me-3"></i>
+                  <div>
+                    <h3>Market Trends</h3>
+                    <p class="mb-0">Track global EV adoption and sales trends</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="500">
+                <div class="feature-box d-flex align-items-center p-3 rounded-3 shadow-sm">
+                  <i class="bi bi-battery-full fs-1 text-primary me-3"></i>
+                  <div>
+                    <h3>Battery Insights</h3>
+                    <p class="mb-0">Detailed battery performance analytics</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="600">
+                <div class="feature-box d-flex align-items-center p-3 rounded-3 shadow-sm">
+                  <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
+                  <div>
+                    <h3>Location Intelligence</h3>
+                    <p class="mb-0">Geospatial analysis of EV adoption</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6" data-aos="zoom-out" data-aos-delay="700">
+                <div class="feature-box d-flex align-items-center p-3 rounded-3 shadow-sm">
+                  <i class="bi bi-people fs-1 text-primary me-3"></i>
+                  <div>
+                    <h3>Consumer Behavior</h3>
+                    <p class="mb-0">Understand EV buyer preferences</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Tabs -->
+        <div class="row feture-tabs mt-5" data-aos="fade-up">
+          <div class="col-lg-6">
+            <h3>Comprehensive EV Market Analysis</h3>
+
+            <ul class="nav nav-pills mb-3">
+              <li>
+                <a class="nav-link active" data-bs-toggle="pill" href="#tab1">Market Growth</a>
+              </li>
+              <li>
+                <a class="nav-link" data-bs-toggle="pill" href="#tab2">Technology</a>
+              </li>
+              <li>
+                <a class="nav-link" data-bs-toggle="pill" href="#tab3">Policy</a>
+              </li>
+            </ul>
+
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="tab1">
+                <p>The global electric vehicle market size was valued at $163 billion in 2020 and is projected to reach $823 billion by 2030, growing at a CAGR of 18.2% from 2021 to 2030.</p>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                  <h4 class="mb-0">Asia-Pacific dominates the market with over 50% share</h4>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                  <h4 class="mb-0">BEVs hold over 70% of the market share</h4>
+                </div>
+                <p>Government initiatives, environmental concerns, and cost reductions in batteries are key market drivers.</p>
+              </div>
+
+              <div class="tab-pane fade" id="tab2">
+                <p>Battery technology advancements are revolutionizing the EV industry with improvements in energy density, charging speed, and cost reduction.</p>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                  <h4 class="mb-0">Solid-state batteries emerging as next-gen solution</h4>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                  <h4 class="mb-0">Battery costs have fallen 89% since 2010</h4>
+                </div>
+                <p>Vehicle-to-grid (V2G) technology and smart charging solutions are creating new opportunities in energy management.</p>
+              </div>
+
+              <div class="tab-pane fade" id="tab3">
+                <p>Government policies play a crucial role in EV adoption through incentives, regulations, and infrastructure development.</p>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                  <h4 class="mb-0">Over 20 countries have announced ICE phase-out dates</h4>
+                </div>
+                <div class="d-flex align-items-center mb-2">
+                  <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                  <h4 class="mb-0">Subsidies and tax credits driving consumer adoption</h4>
+                </div>
+                <p>Public charging infrastructure investments are accelerating globally to support the growing EV fleet.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+                <img src="assets/img/logo2.jpg" alt="EV Analytics Dashboard Preview" class="img-fluid" loading="lazy" height="1000"> 
+ </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- Simple Tableau Embed for Your Story -->
+<div class="tableau-embed">
+  <iframe
+    src="https://public.tableau.com/views/DrivingtheFutureInsightsintoElectricVehicles/StoryofElectricCarsinIndia?:embed=y&:showVizHome=no"
+    width="100%"
+    height="800"
+    frameborder="0"
+    title="Story of Electric Cars in India"
+    aria-label="Interactive visualization showing the growth of electric vehicles in India">
+  </iframe>
+</div>
+
+<style>
+  .tableau-embed {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+</style>
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+        <header class="section-header">
+          <h2>Contact Us</h2>
+          <p>Get in touch for a demo or consultation</p>
+        </header>
+
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <div class="info-box p-4 rounded-3 h-100">
+                  <i class="bi bi-geo-alt fs-1 text-primary"></i>
+                  <h3>Our Headquarters</h3>
+                  <p>EV Analytics Center</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box p-4 rounded-3 h-100">
+                  <i class="bi bi-telephone fs-1 text-primary"></i>
+                  <h3>Call Us</h3>
+                  <p>+91 7995252381<br>+91 7995252381</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box p-4 rounded-3 h-100">
+                  <i class="bi bi-envelope fs-1 text-primary"></i>
+                  <h3>Email Us</h3>
+                  <p>info@evanalytics.com<br>sales@evanalytics.com</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box p-4 rounded-3 h-100">
+                  <i class="bi bi-clock fs-1 text-primary"></i>
+                  <h3>Office Hours</h3>
+                  <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 2PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" class="php-email-form p-4 rounded-3 shadow-sm">
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                </div>
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter py-5 bg-primary text-white">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="mb-4">Subscribe to Our EV Insights Newsletter</h2>
+            <p class="mb-4">Get monthly updates on the latest EV trends, market analysis, and technology breakthroughs</p>
+            <form class="d-flex">
+              <input type="email" class="form-control me-2" placeholder="Your email address">
+              <button class="btn btn-dark" type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-12 footer-info">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <img src="assets/img/logo3.jpg" alt="EV Analytics Logo" width="40" height="40">
+              <span class="ms-2">EV Analytics</span>
+            </a>
+            <p class="mt-3">
+              The leading platform for electric vehicle data analytics, providing actionable insights for businesses, policymakers, and consumers in the EV ecosystem.
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#about">About</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#dashboard">Dashboard</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#features">Features</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Market Analysis</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Performance Benchmarking</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Charging Infrastructure</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Battery Analytics</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#">Custom Reports</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-contact">
+            <h4>Contact Info</h4>
+            <p>
+              EV Analytics Center <br>
+             <br>
+             <br><br>
+              <strong>Phone:</strong>+91 7995252381<br>
+              <strong>Email:</strong> info@evanalytics.com<br>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>EV Analytics</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed with <i class="bi bi-heart-fill text-danger"></i> for the EV revolution
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.7/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script>
+    // Mobile nav toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navbar = document.querySelector('#navbar');
+      
+      mobileNavToggle.addEventListener('click', () => {
+        navbar.classList.toggle('navbar-mobile');
+        mobileNavToggle.classList.toggle('bi-list');
+        mobileNavToggle.classList.toggle('bi-x');
+      });
+      
+      // Navbar links active state on scroll
+      const navbarlinks = document.querySelectorAll('#navbar .scrollto');
+      
+      function navbarlinksActive() {
+        const position = window.scrollY + 200;
+        
+        navbarlinks.forEach(navbarlink => {
+          if (!navbarlink.hash) return;
+          
+          const section = document.querySelector(navbarlink.hash);
+          if (!section) return;
+          
+          if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+            navbarlink.classList.add('active');
+          } else {
+            navbarlink.classList.remove('active');
+          }
+        });
+      }
+      
+      window.addEventListener('load', navbarlinksActive);
+      window.addEventListener('scroll', navbarlinksActive);
+      
+      // Scroll with offset on links with a class name .scrollto
+      document.querySelectorAll('.scrollto').forEach(link => {
+        link.addEventListener('click', function(e) {
+          if (document.querySelector(this.hash)) {
+            e.preventDefault();
+            
+            const navbar = document.querySelector('#navbar');
+            if (navbar.classList.contains('navbar-mobile')) {
+              navbar.classList.remove('navbar-mobile');
+              const navbarToggle = document.querySelector('.mobile-nav-toggle');
+              navbarToggle.classList.toggle('bi-list');
+              navbarToggle.classList.toggle('bi-x');
+            }
+            
+            const offset = 70;
+            const elementPos = document.querySelector(this.hash).offsetTop;
+            window.scrollTo({
+              top: elementPos - offset,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Scroll with ofset on page load with hash links in the url
+      if (window.location.hash) {
+        if (document.querySelector(window.location.hash)) {
+          const offset = 70;
+          const elementPos = document.querySelector(window.location.hash).offsetTop;
+          window.scrollTo({
+            top: elementPos - offset,
+            behavior: 'smooth'
+          });
+        }
+      }
+      
+      // Back to top button
+      const backtotop = document.querySelector('.back-to-top');
+      
+      function toggleBacktotop() {
+        if (window.scrollY > 100) {
+          backtotop.classList.add('active');
+        } else {
+          backtotop.classList.remove('active');
+        }
+      }
+      
+      window.addEventListener('load', toggleBacktotop);
+      window.addEventListener('scroll', toggleBacktotop);
+      
+      // Testimonials slider
+      new Swiper('.testimonials-slider', {
+        speed: 600,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false
+        },
+        slidesPerView: 'auto',
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20
+          },
+          1200: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          }
+        }
+      });
+      
+      // Animation on scroll
+      AOS.init({
+        duration: 1000,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+      
+      // Animate stats counter
+      const counters = document.querySelectorAll('[data-count]');
+      const speed = 200;
+      
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        
+        if(count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 1);
+        } else {
+          counter.innerText = target;
+        }
+        
+        function updateCount() {
+          const count = +counter.innerText;
+          if(count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 1);
+          } else {
+            counter.innerText = target;
+          }
+        }
+      });
+      
+      // Animate skill bars
+      const skillBars = document.querySelectorAll('.skill-progress');
+      
+      function animateSkillBars() {
+        skillBars.forEach(bar => {
+          const width = bar.style.getPropertyValue('--percentage');
+          bar.style.width = width;
+        });
+      }
+      
+      // Initialize skill bars when in view
+      const skillsSection = document.querySelector('.skills');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateSkillBars();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      if (skillsSection) {
+        observer.observe(skillsSection);
+      }
+    });
+  </script>
+</body>
+</html>
